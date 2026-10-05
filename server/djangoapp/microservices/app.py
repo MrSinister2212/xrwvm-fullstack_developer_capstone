@@ -5,8 +5,10 @@ import os
 
 app = Flask("Sentiment Analyzer")
 
-LOCAL_SENTIMENT_DIR = os.path.join(os.path.dirname(__file__), "sentiment")
-nltk.data.path.append(LOCAL_SENTIMENT_DIR)
+# The repository includes sentiment/vader_lexicon.zip under this directory.
+# Add this directory as an NLTK data root so NLTK can resolve
+# sentiment/vader_lexicon.zip correctly.
+nltk.data.path.append(os.path.dirname(__file__))
 
 sia = SentimentIntensityAnalyzer()
 
